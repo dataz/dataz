@@ -1,0 +1,18 @@
+[submodule "dataz-common-test"]
+	path = dataz-common-test
+	url = https://github.com/dataz/dataz-common-test.git
+[submodule "dataz-common"]
+	path = dataz-common
+	url = https://github.com/dataz/dataz-common.git
+[submodule "dataz-core"]
+	path = dataz-core
+	url = https://github.com/dataz/dataz-core.git
+[submodule "dataz-junit4"]
+	path = dataz-junit4
+	url = https://github.com/dataz/dataz-junit4.git
+[submodule "datastore-sql"]
+	path = datastore-sql
+	url = https://github.com/dataz/datastore-sql.git
+[submodule "datastore-neo4j"]
+	path = datastore-neo4j
+	url = https://github.com/dataz/datastore-neo4j.git
