@@ -1,0 +1,93 @@
+/*
+ * dataZ - Test Support For Data Stores.
+ *
+ * Copyright 2014-2020 the original author or authors.
+ *
+ * All rights reserved. This program and the accompanying materials are
+ * made available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution and is available at
+ *
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = '5.6.4'
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'maven'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    // dataZVersion see gradle.properties
+    version = dataZVersion
+    group = 'org.failearly.dataz'
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+
+    dependencies {
+        implementation group: 'junit', name: 'junit', version: junitVersion
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+        implementation 'com.google.guava:guava:28.0-jre'
+        testCompile group: 'org.slf4j', name: 'slf4j-simple', version: slf4jVersion
+        testCompile group: 'org.hamcrest', name:'hamcrest-library', version: hamcrestVersion
+        testCompile group: 'org.mockito', name:'mockito-core', version: mockitoVersion
+        testCompile group: 'org.assertj', name:'assertj-core', version: assertjVersion
+
+        testCompile group: "org.spockframework", name:"spock-core", version: spockVersion
+        testCompile group: "org.codehaus.groovy", name:"groovy-all", version:groovyVersion
+
+        testCompile( 'com.athaydes:spock-reports:1.2.10' ) {
+            transitive = false // this avoids affecting your version of Groovy/Spock
+        }
+    }
+
+    javadoc.configure {
+        failOnError = false
+
+        exclude '**/internal/**'
+
+
+        options {
+            memberLevel = JavadocMemberLevel.PROTECTED
+            title = "${project.name.capitalize()} API - Version ${project.version}"
+            windowTitle = title
+            linkSource = true
+            // TODO : Update stylesheet
+            // stylesheetFile = "${rootDir}/doc/css/stylesheet.css" as File
+            footer = 'Copyright (C) 2014-2020 <a href="http://fail-early.com">Fail Early</a>. All rights reserved.'
+        }
+    }
+
+    task sourcesJar(type: Jar, dependsOn:[classes, test]) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn:[javadoc, test]) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    jar.configure {
+        dependsOn test
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+}
