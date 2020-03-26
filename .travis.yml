@@ -3,6 +3,8 @@ language: java
 jdk:
   - openjdk8
 
+before_install:
+  - export TZ=Europe/Zurich
 
 before_script:
-  -     date
+  -     echo "CURRENT DATE IS=`date`"
