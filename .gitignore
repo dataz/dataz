@@ -23,7 +23,7 @@
 hs_err_pid*
 
 /.gradle
-/.gradletasknamecache
+.gradletasknamecache
 
 /dataz.iws
 /dataz.ipr
