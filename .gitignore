@@ -23,10 +23,12 @@
 hs_err_pid*
 
 /.gradle
+/.gradletasknamecache
 
 /dataz.iws
 /dataz.ipr
 /dataz.iml
+
 
 # Necessary otherwise gradlew could not be started
 !/gradle/wrapper/gradle-wrapper.jar
