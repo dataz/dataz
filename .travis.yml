@@ -7,4 +7,4 @@ before_install:
   - export TZ=Europe/Zurich
 
 before_script:
-  -     echo "CURRENT DATE IS=`date`"
+  -     echo "CURRENT DATE IS=$(date)"
