@@ -58,6 +58,11 @@ subprojects {
         }
     }
 
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-Xlint:unchecked'
+        options.deprecation = true
+    }
+
     javadoc.configure {
         failOnError = false
 
@@ -76,12 +81,12 @@ subprojects {
     }
 
     task sourcesJar(type: Jar, dependsOn:[classes, test]) {
-        classifier = 'sources'
+        archiveClassifier = 'sources'
         from sourceSets.main.allSource
     }
 
     task javadocJar(type: Jar, dependsOn:[javadoc, test]) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from javadoc.destinationDir
     }
 
