@@ -1,20 +1,20 @@
 [submodule "dataz-common-test"]
 	path = dataz-common-test
 	url = https://github.com/dataz/dataz-common-test.git
-	branch = develop
+	# branch = develop
 [submodule "dataz-core"]
 	path = dataz-core
 	url = https://github.com/dataz/dataz-core.git
-	branch = develop
+	# branch = develop
 [submodule "dataz-junit4"]
 	path = dataz-junit4
 	url = https://github.com/dataz/dataz-junit4.git
-	branch = develop
+	# branch = develop
 [submodule "datastore-sql"]
 	path = datastore-sql
 	url = https://github.com/dataz/datastore-sql.git
-	branch = develop
+	# branch = develop
 [submodule "datastore-neo4j"]
 	path = datastore-neo4j
 	url = https://github.com/dataz/datastore-neo4j.git
-	branch = develop
+	# branch = develop
